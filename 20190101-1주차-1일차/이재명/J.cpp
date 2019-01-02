@@ -1,38 +1,17 @@
 #include <stdio.h>
 #include <algorithm>
-#include <math.h>
 using namespace std;
-int arr[10];
-int visit[10];
-int n;
-int func(int t, int cnt,int nxt){
-	int sum=abs(arr[cnt]-arr[nxt]);
-	if(t==n) return sum;
-	int max=-1;
-	for(int i=0;i<n;i++){
-		if(!visit[i]){
-			visit[i]=1;
-			int tmp=func(t+1,nxt,i);
-			visit[i]=0;
-			max=max>tmp?max:tmp;
-		}
-	}
-	return sum+max;
-}
+int arr[8];
 int main(){
+	int n;
 	scanf("%d",&n);
 	for(int i=0;i<n;i++) scanf("%d",arr+i);
 	sort(arr,arr+n);
-	int sum=-1;
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
-			if(i!=j){
-				visit[i]=visit[j]=1;
-				int tmp=func(2,i,j);
-				visit[i]=visit[j]=0;
-				sum=sum>tmp?sum:tmp;
-			}
-		}
-	}
-	printf("%d",sum);
+	int ans=-1;
+	do{
+		int sum=0;
+		for(int i=0;i<n-1;i++) sum+=abs(arr[i]-arr[i+1]);
+		ans=max(ans,sum);
+	}while(next_permutation(arr,arr+n));
+	printf("%d",ans);
 }
