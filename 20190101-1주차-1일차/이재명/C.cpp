@@ -1,13 +1,12 @@
 #include<stdio.h>
 #include <string.h>
-char txt[65];
 int main(){
 	int n;
-	scanf("%d\n",&n);
+	scanf("%d",&n);
 	while(n--){
+		char txt[65]={0,};
 		int tmp;
-		fgets(txt,65,stdin);
-		if((txt[strlen(txt)-2]-'0')%2) printf("odd\n");
-		else printf("even\n");
+		scanf("%s",txt);
+		printf("%s\n",(txt[strlen(txt)-1]-'0')%2?"odd":"even");
 	}
 }
