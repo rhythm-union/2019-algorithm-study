@@ -6,7 +6,7 @@ int main() {
     int n; cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> s;
-        cout << ((int)*(s.end() - 1) % 2 ? "odd" : "even") << '\n';
+        cout << ((*(s.end() - 1) - 48) % 2 ? "odd" : "even") << '\n';
     }
     
     return 0;
