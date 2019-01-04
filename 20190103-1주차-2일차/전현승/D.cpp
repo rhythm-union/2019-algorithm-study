@@ -11,8 +11,6 @@ int main() {
     bool error;
     deque<int> dq;
     
-    int size;
-    
     int t; cin >> t;
     while (t--) {
         reversed = false;
@@ -46,7 +44,6 @@ int main() {
         if (error) {
             cout << "error\n";
         } else {
-            size = dq.size();
             cout << '[';
             if (reversed) {
                 while (!dq.empty()) {
@@ -67,7 +64,6 @@ int main() {
             }
             cout << "]\n";
         }
-        
     }
     
     return 0;
