@@ -9,7 +9,6 @@ int main(){
 			sum=sum*10+(num%2?7:4);
 			num/=2;
 		}
-		printf("%d\n",sum);
 		if(sum<=N){
 			ret=ret>sum?ret:sum;
 		}
