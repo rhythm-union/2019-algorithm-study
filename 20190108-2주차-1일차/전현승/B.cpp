@@ -2,13 +2,15 @@
 using namespace std;
 
 int main() {
-    int dp[50] = {0, 1};
+    int dp[1005] = {1, 2};
     int n; cin >> n;
-    for (int i = 2; i <= n; i++) {
+    
+    for (int i = 2; i < n; i++) {
         dp[i] = dp[i - 2] + dp[i - 1];
+        dp[i] %= 10007;
     }
     
-    cout << dp[n] << '\n';
+    cout << dp[n - 1] << '\n';
     
     return 0;
 }
