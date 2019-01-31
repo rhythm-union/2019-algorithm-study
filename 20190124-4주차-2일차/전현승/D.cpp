@@ -18,12 +18,12 @@ public:
     }
     
     Matrix& operator* (const Matrix b) {
-        Matrix ret(this->v.size(), this->v.size());
+        Matrix ret(this->v.size(), b.v[0].size());
         
         for (int i = 0; i < this->v.size(); i++) {
             for (int j = 0; j < b.v[0].size(); j++) {
                 for (int k = 0; k < this->v[i].size(); k++) {
-                    ret[i][j] += (this->v[i][k] % 1000ULL * b.v[k][j] % 1000ULL) % 1000ULL;
+                    ret[i][j] += (this->v[i][k] % 1000000ULL * b.v[k][j] % 1000000ULL) % 1000000ULL;
                 }
             }
         }
@@ -52,22 +52,19 @@ int main() {
         freopen("in.txt", "r", stdin);
     #endif
     
-    int n; ull b; cin >> n >> b;
-    Matrix m(n, n);
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cin >> m[i][j];
-        }
-    }
+    ull n; cin >> n;
+    Matrix fibo(2, 2);
+    fibo[0][0] = 1;
+    fibo[0][1] = 1;
+    fibo[1][0] = 1;
+    fibo[1][1] = 0;
+    Matrix a = solution(fibo, n);
+    Matrix b(2, 1);
+    b[0][0] = 1;
+    b[1][0] = 0;
     
-    Matrix res = solution(m, b);
-    
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << res[i][j] % 1000ULL << ' ';
-        }
-        cout << '\n';
-    }
+    Matrix ret = a * b;
+    cout << ret[1][0] % 1000000ULL << '\n';
     
     return 0;
 }
