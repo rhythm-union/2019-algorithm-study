@@ -3,10 +3,12 @@
 #include <algorithm>
 using namespace std;
 int tree[10001][2];
+int dp[10001];
 vector<vector<int> > list;
 int find_root(int x){
 	if(x==-1) return 0;
-	return find_root(tree[x][0])+find_root(tree[x][1])+1;
+	if(dp[x]) return dp[x];
+	return dp[x]=find_root(tree[x][0])+find_root(tree[x][1])+1;
 }
 int sol(int x, int level, int s){
 	if(x==-1) return 0;
